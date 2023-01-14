@@ -1,0 +1,55 @@
+.start-menu-wrapper {
+    height: calc(100% - 46px);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 46px;
+
+    align-items: flex-end;
+    justify-content: flex-start;
+    z-index: 70;
+    display: none;
+
+    &.show {
+        display: flex;
+    }
+
+    .start-menu {
+        width: 320px;
+
+        .header {
+            img {
+                height: 45px;
+                width: 45px;
+            }
+        }
+
+
+        .menu {
+            button {
+                display: flex;
+                align-items: center;
+                margin-bottom: 2px;
+
+                &:hover {
+                    background: #dcdcdc;
+                }
+
+                img {
+                    height: 30px;
+                    width: 30px;
+                }
+
+                span {
+                    padding-left: 4px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    text-align: left;
+                    line-height: 14px;
+                }
+            }
+        }
+
+    }
+
+}

@@ -1,0 +1,39 @@
+.desktop_icons_wrapper {
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    min-height: 50%;
+
+    .desktop_icon {
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+        border: none;
+        width: 98px;
+        height: 92px;
+        padding: 6px;
+        background: transparent;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.18);
+        }
+
+        img {
+            display: block;
+            margin: auto;
+            height: 48px;
+            width: 48px;
+        }
+
+        span {
+            padding-top: 4px;
+            display: block;
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+            line-height: 16px;
+            word-break: break-word;
+        }
+
+    }
+}

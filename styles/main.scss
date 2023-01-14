@@ -1,0 +1,150 @@
+html, body {
+    height: 100vh;
+}
+
+.bg-dark{
+    background: #C5C5C5 !important;
+}
+.preloader {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+
+    @keyframes preloader {
+        0% {
+            display: block;
+        }
+        100% {
+            display: none;
+            z-index: -1;
+        }
+    }
+
+
+    & > div {
+        height: 300px;
+        width: 300px;
+        text-align: center;
+    }
+
+    .loader {
+        height: 26px;
+        width: 60%;
+        margin: auto;
+        border: 2px solid white;
+        border-radius: 2px;
+        margin-top: 30px;
+        padding: 2px;
+        position: relative;
+
+        & > div {
+            display: flex;
+            height: 18px;
+            position: absolute;
+            left: 2px;
+            animation: loader 0.5s infinite linear alternate;
+
+            span {
+                display: block;
+                width: 12px;
+                background: white;
+                margin: 2px;
+                border-radius: 1px;
+            }
+
+
+            @keyframes loader {
+                0% {
+                    left: 2px;
+                }
+                100% {
+                    left: 126px;
+                }
+            }
+
+        }
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    canvas {
+        display: block;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .main {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        pointer-events: none;
+
+        * {
+            pointer-events: auto;
+        }
+    }
+
+}
+
+@import "_icons";
+@import "_startbar";
+@import "_start_menu";
+@import "_windowStyles";
+@import "_scrollbar";
+@import "_components";
+
+.btn{
+    *{
+        pointer-events: none;
+    }
+    &:focus{
+        border-color: transparent;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    &.btn-dark{
+        background: #D9D9D9 !important;
+        border-radius: 0;
+        border: 2px solid black;
+        color: black !important;
+        font-weight: bold !important;
+    }
+;
+}
+
+
+.blue-screen-of-death{
+    display: none;
+    background: #1400FF;
+    position: fixed;
+    z-index: 999;
+    p{
+        color: white;
+    }
+
+    &.show{
+        display: flex;
+    }
+}
+
