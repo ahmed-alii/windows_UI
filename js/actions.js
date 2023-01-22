@@ -8,6 +8,8 @@ let deathScreen = document.querySelector(".blue-screen-of-death");
 
 let wins = document.querySelectorAll(".window")
 
+let breakpoint = 620;
+
 let coordinates = {x: 20, y: 10, z: 20}
 
 
@@ -23,16 +25,27 @@ action_buttons.forEach(el => el.addEventListener("click", function () {
 
     if (this.querySelector("span").innerText) { //this opens the new window
         wins.forEach(el => {
+
+
             if (el.dataset.name === this.querySelector("span").innerText) {
 
-                if (el.classList.contains("d-none")) {
-                    addToAppsList(el)
-                    manageZIndex()
-                    el.style = `top: ${coordinates.y}%; left: ${coordinates.x}%; z-index: ${coordinates.z}`
-                    el.classList.remove("d-none")
-                    startMenuWrapper.classList.remove("show")
+                if (el.classList.contains("d-none")) { //app is not open
 
-                } else {
+                    if (window.innerWidth <= breakpoint) { //on a smaller window
+                        addToAppsList(el)
+                        manageZIndex()
+                        el.classList.remove("d-none")
+                        el.style = `top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: ${coordinates.z}`
+                        startMenuWrapper.classList.remove("show")
+                    } else {
+                        addToAppsList(el)
+                        manageZIndex()
+                        el.style = `top: ${coordinates.y}%; left: ${coordinates.x}%; z-index: ${coordinates.z}`
+                        el.classList.remove("d-none")
+                        startMenuWrapper.classList.remove("show")
+                    }
+
+                } else { // the app is open already
                     if (parseInt(el.style.zIndex) !== parseInt(coordinates.z)) {
                         manageZIndex()
                         el.style.zIndex = coordinates.z
@@ -125,21 +138,24 @@ function pause() {
 
 
 function addToAppsList(el) {
+
     let iconSVG = el.querySelector(".header .icon svg")
     let txtTitle = el.dataset.name
 
     let appsListContainer = document.querySelector("#apps_list")
     let appTemplate = appsListContainer.querySelector(".apps_template")
 
+
     let newApp = appTemplate.cloneNode(true)
+
     newApp.querySelector(".app_icon").appendChild(iconSVG.cloneNode(true))
     newApp.querySelector(".app_name").innerText = txtTitle
+
     newApp.classList.remove("apps_template")
     newApp.dataset.identifier = txtTitle
 
     appsListContainer.appendChild(newApp)
-
-    newApp.addEventListener("click", function (){
+    newApp.addEventListener("click", function () {
         el.click()
     })
 
@@ -147,16 +163,16 @@ function addToAppsList(el) {
 
 }
 
-function removeAppFromAppsList(win){
+function removeAppFromAppsList(win) {
     let appsListContainer = document.querySelector("#apps_list")
     let appInstance = appsListContainer.querySelector(`.app[data-identifier="${win.dataset.name}"]`)
     appInstance.remove()
     handleAppsWidth()
 }
 
-function handleAppsWidth(){
+function handleAppsWidth() {
 
-    let windowWidth =  window.innerWidth
+    let windowWidth = window.innerWidth
     let startWidth = document.querySelector(".taskbar_wrapper .start").clientWidth;
     let clockWidth = document.querySelector(".taskbar_wrapper .statusbar").clientWidth;
     let appListWidth = document.querySelector("#apps_list").clientWidth;
@@ -165,15 +181,15 @@ function handleAppsWidth(){
 
     let appsListContainer = document.querySelector("#apps_list")
 
-    if (appListWidth > optimalWidth){
+    if (appListWidth > optimalWidth) {
         appsListContainer.style.maxWidth = `${optimalWidth}px`
 
     }
-    if (appListScrollWidth > optimalWidth){
+    if (appListScrollWidth > optimalWidth) {
         console.log("more elements than...")
         let apps = appsListContainer.querySelectorAll(".app");
         let numberOfApps = apps.length
-        let optimalAppsWidth = optimalWidth/numberOfApps;
+        let optimalAppsWidth = optimalWidth / numberOfApps;
 
         apps.forEach(app => {
             app.style.width = `${optimalAppsWidth}px`
@@ -181,7 +197,7 @@ function handleAppsWidth(){
 
     }
 
-    if (appListScrollWidth < optimalWidth){
+    if (appListScrollWidth < optimalWidth) {
         let apps = appsListContainer.querySelectorAll(".app");
         apps.forEach(app => {
             app.style = ""

@@ -50,6 +50,9 @@
         border: inherit;
         height: 100%;
     }
+    .bg-dark{
+        background: #0011AA !important;
+    }
     .header {
         height: 30px;
         width: 100%;
@@ -57,16 +60,17 @@
         justify-content: space-between;
         border-bottom: inherit;
 
+
         & * {
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            color: white !important;
         }
 
         .icon {
             width: 40px;
-            background: white;
         }
 
         .buttons {
@@ -100,7 +104,6 @@
         }
     }
     .content{
-        overflow: scroll;
         scroll-behavior: smooth;
         padding: 6px;
         padding-right: 14px;

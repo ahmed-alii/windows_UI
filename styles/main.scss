@@ -2,9 +2,10 @@ html, body {
     height: 100vh;
 }
 
-.bg-dark{
+.bg-dark {
     background: #C5C5C5 !important;
 }
+
 .preloader {
     height: 100%;
     width: 100%;
@@ -36,6 +37,7 @@ html, body {
         text-align: center;
     }
 
+
     .loader {
         height: 26px;
         width: 60%;
@@ -51,7 +53,7 @@ html, body {
             height: 18px;
             position: absolute;
             left: 2px;
-            animation: loader 0.5s infinite linear alternate;
+            animation: loader 1s infinite linear ;
 
             span {
                 display: block;
@@ -65,9 +67,11 @@ html, body {
             @keyframes loader {
                 0% {
                     left: 2px;
+
                 }
                 100% {
                     left: 126px;
+
                 }
             }
 
@@ -113,37 +117,45 @@ body {
 @import "_scrollbar";
 @import "_components";
 
-.btn{
-    *{
+.btn {
+    * {
         pointer-events: none;
     }
-    &:focus{
+
+    &:focus {
         border-color: transparent;
         box-shadow: none !important;
         outline: none !important;
     }
 
-    &.btn-dark{
+    &.btn-dark {
         background: #D9D9D9 !important;
         border-radius: 0;
         border: 2px solid black;
         color: black !important;
         font-weight: bold !important;
+        font-size: 25px !important;
+    }
+
+    &.px-5 {
+        padding-right: 4rem !important;
+        padding-left: 4rem !important;
     }
 ;
 }
 
 
-.blue-screen-of-death{
+.blue-screen-of-death {
     display: none;
     background: #1400FF;
     position: fixed;
     z-index: 999;
-    p{
+
+    p {
         color: white;
     }
 
-    &.show{
+    &.show {
         display: flex;
     }
 }

@@ -1,21 +1,19 @@
 let clock_digital = document.querySelector(".digital-clock")
 let date_ = document.querySelector(".date")
-let dragables = document.querySelectorAll(".draggable");
-
 
 window.onload = ()=>{
     setTimeout(() => {
         document.querySelector("#preloader").remove()
         startupSequence()
-        //todo: make it 1000
-    }, 0)
+    }, 1000)
 }
 
 
+let dragables = document.querySelectorAll(".draggable");
+dragables.forEach(el => {dragElement(el);})
 
 displayClockDigital(clock_digital);
 displayCurrentDate(date_)
-dragables.forEach(el => {dragElement(el);})
 
 // initialise scrollbars
 document.querySelectorAll('.window .content:not(.no-scroll)').forEach(el => {
@@ -29,11 +27,10 @@ manageCollapse()
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    if (document.getElementById(elmnt.id + "header")) {
-        // if present, the header is where you move the DIV from:
-        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+
+    if (elmnt.querySelector(".header")) {
+        elmnt.querySelector(".header").onmousedown = dragMouseDown;
     } else {
-        // otherwise, move the DIV from anywhere inside the DIV:
         elmnt.onmousedown = dragMouseDown;
     }
 
@@ -110,17 +107,20 @@ function manageCollapse(){
 
 function startupSequence(){
     let icons = document.querySelectorAll(".desktop_icon")
-    let current = 0
-    let interval = setInterval(()=> {
-        if (current < icons.length){
-            icons[current].classList.remove("d-none")
-            current++
-        }else{
-            clearInterval(interval)
-            document.querySelector(".window.welcome").classList.remove("d-none")
-        }
+    icons.forEach(icon => {
+        icon.classList.remove("d-none")
+    })
 
-    }, 300)
-
-
+    document.querySelector(".window.welcome").classList.remove("d-none")
+    // let current = 0
+    // let interval = setInterval(()=> {
+    //     if (current < icons.length){
+    //         icons[current].classList.remove("d-none")
+    //         current++
+    //     }else{
+    //         clearInterval(interval)
+    //         document.querySelector(".window.welcome").classList.remove("d-none")
+    //     }
+    //
+    // }, 300)
 }

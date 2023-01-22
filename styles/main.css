@@ -41,7 +41,7 @@ html, body {
       height: 18px;
       position: absolute;
       left: 2px;
-      animation: loader 0.5s infinite linear alternate; }
+      animation: loader 1s infinite linear; }
       .preloader .loader > div span {
         display: block;
         width: 12px;
@@ -132,7 +132,7 @@ body {
     .taskbar_wrapper .taskbar .apps {
       width: 100%; }
     .taskbar_wrapper .taskbar .statusbar {
-      min-width: 150px;
+      min-width: 0px !important;
       width: 150px;
       display: flex;
       align-items: center;
@@ -224,6 +224,8 @@ body {
   .window .wrapper {
     border: inherit;
     height: 100%; }
+  .window .bg-dark {
+    background: #0011AA !important; }
   .window .header {
     height: 30px;
     width: 100%;
@@ -234,10 +236,10 @@ body {
       height: 100%;
       display: flex;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      color: white !important; }
     .window .header .icon {
-      width: 40px;
-      background: white; }
+      width: 40px; }
     .window .header .buttons button {
       border: 0;
       border-left: 2px solid black;
@@ -254,7 +256,6 @@ body {
         .window .header .buttons button.minimise:hover svg {
           filter: invert(1); }
   .window .content {
-    overflow: scroll;
     scroll-behavior: smooth;
     padding: 6px;
     padding-right: 14px;
@@ -626,7 +627,11 @@ body {
   border-radius: 0;
   border: 2px solid black;
   color: black !important;
-  font-weight: bold !important; }
+  font-weight: bold !important;
+  font-size: 25px !important; }
+.btn.px-5 {
+  padding-right: 4rem !important;
+  padding-left: 4rem !important; }
 
 .blue-screen-of-death {
   display: none;
